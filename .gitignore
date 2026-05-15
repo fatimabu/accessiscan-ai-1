@@ -16,8 +16,7 @@ runs/
 *.onnx
 
 # Dataset files (optional if dataset is large/private)
-data/images/
-data/labels/
+data/
 
 # macOS
 .DS_Store
