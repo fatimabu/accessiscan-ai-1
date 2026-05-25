@@ -135,9 +135,10 @@ Initialize your isolated local runtime environment and install the verified depe
 `python -m venv venv`
 
 #### 3. Activate the virtual environment context
-#### For Windows PowerShell / Command Prompt:
+* For Windows PowerShell / Command Prompt:
 `venv\Scripts\activate`
-#### For macOS / Linux Terminal:
+
+*For macOS / Linux Terminal:
 `source venv/bin/activate`
 
 #### 4. Upgrade core package managers
