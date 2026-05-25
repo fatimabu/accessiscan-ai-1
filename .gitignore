@@ -1,0 +1,35 @@
+# ==========================================
+# AccessiScan-AI: Standard Git Ignore File
+# ==========================================
+
+# --- Python Virtual Environments ---
+# Prevents thousands of local dependency files from slowing down the repo
+venv/
+.venv/
+env/
+ENV/
+pyvenv.cfg
+
+# --- Weights & Biases (wandb) Logs ---
+# Prevents tracking giant local execution logs and metadata charts
+wandb/
+
+# --- Machine Learning Models & Datasets ---
+# Prevents uploading massive model weight files (GitHub blocks files over 100MB)
+*.pt
+*.onnx
+*.engine
+
+# --- Training Outputs & Run Artifacts ---
+# Prevents uploading local validation images, confusion matrices, and check-pointed data
+runs/
+models/train/
+
+# --- System & IDE Specific Files ---
+# Keeps personal workspace preferences or operating system clutter out of GitHub
+.vscode/
+.idea/
+__pycache__/
+*.pyc
+.DS_Store
+Thumbs.db
