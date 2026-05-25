@@ -1,7 +1,19 @@
-path: ./data
+# AccesiScan-AI: DSAPT 2026 Dataset Configuration
+path: ./data          # The root directory of the dataset
+train: images/train   # Images used to teach the AI
+val: images/val       # Images used to test accuracy during training
+test: images/test     # Images used for final quality assurance
 
-train: images/train
-val: images/val
+# Number of classes
+nc: 20
 
+# DSAPT 2026 Mapping Classes
+# These align with the audit requirements found in our project brief
 names:
-  0: accessibility signage
+  0: accessibility_signage
+  1: ramp
+  2: stairs
+  3: tactile_indicators
+  4: handrail
+  5: kerb_ramp
+  6: platform_edge
