@@ -140,10 +140,10 @@ venv\Scripts\activate
 #### For macOS / Linux Terminal:
 source venv/bin/activate
 
-# 4. Upgrade core package managers
+#### 4. Upgrade core package managers
 pip install --upgrade pip setuptools wheel
 
-# 5. Install the pinned production dependency tree
+#### 5. Install the pinned production dependency tree
 pip install ultralytics opencv-python numpy scipy wandb
 
 [!WARNING] Universal Data-Loader Stability Control: > The training workflow inside train.py hardcodes multi-threaded data loading to a single main process (workers=0). This architectural pin is mandatory to prevent system-level socket hangs and race conditions inside the Python data loader when executing on standard consumer workstations. Do not modify this parameter, as it guarantees deterministic optimization runs.
