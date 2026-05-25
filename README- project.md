@@ -76,7 +76,7 @@ Definitions of success are tied to rigorous engineering and ethical benchmarks:
 
 The repository enforces a decoupled directory layout to support reproducible machine learning training and strict separation between stateless vision execution and file persistence layers:
 
-```AccessiScan-AI/
+"""AccessiScan-AI/
 ├──ai_engine.py                 # Executive Pipeline controller(Main Entry Point)
 ├── train.py                    # Production ML Training & Model Compilation Loop
 ├── configs/                    # Model Strategy Configuration Layer
@@ -105,7 +105,7 @@ The repository enforces a decoupled directory layout to support reproducible mac
 ├── requirements.txt            # Project Framework Pinpoint Dependencies
 ├── README.md                   # Core Project Architectural Blueprint Document
 ├── LICENSE                     # Project license
-└── .gitignore                  # Environment Protection Filters (Omits Local venv & Caches)
+└── .gitignore                  # Environment Protection Filters (Omits Local venv & Caches)"""
 
 
 [!IMPORTANT] Production Subfolder Pathing Logic Guardrail: > To guarantee runtime stability across diverse local or server deployment locations, `scripts/detect.py` evaluates model assets utilizing strict relative lookups (`../models/train/weights/best.pt`). This architecture guarantees that the execution layer reads target weights flawlessly when initialized from the central project directory. If the weight file is missing during initialization, the pipeline implements an automated graceful degradation fallback to base `yolov8n.pt` to prevent app-wide thread crashes.
