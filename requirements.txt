@@ -1,49 +1,72 @@
-annotated-doc==0.0.4
-annotated-types==0.7.0
-anyio==4.12.1
-certifi==2026.4.22
-charset-normalizer==3.4.7
-click==8.1.8
-contourpy==1.3.0
-cycler==0.12.1
-exceptiongroup==1.3.1
-fastapi==0.128.8
-filelock==3.19.1
-fonttools==4.60.2
-fsspec==2025.10.0
-h11==0.16.0
-idna==3.14
-importlib_resources==6.5.2
-Jinja2==3.1.6
-kiwisolver==1.4.7
-MarkupSafe==3.0.3
-matplotlib==3.9.4
-mpmath==1.3.0
-networkx==3.2.1
-numpy==2.0.2
-opencv-python==4.13.0.92
-packaging==26.2
-pillow==11.3.0
-polars==1.36.1
-polars-runtime-32==1.36.1
-psutil==7.2.2
-pydantic==2.13.4
-pydantic_core==2.46.4
-pyparsing==3.3.2
-python-dateutil==2.9.0.post0
-python-multipart==0.0.20
-PyYAML==6.0.3
-requests==2.32.5
-scipy==1.13.1
-six==1.17.0
-starlette==0.49.3
-sympy==1.14.0
-torch==2.8.0
-torchvision==0.23.0
-typing-inspection==0.4.2
-typing_extensions==4.15.0
-ultralytics==8.4.48
-ultralytics-thop==2.0.19
-urllib3==2.6.3
-uvicorn==0.39.0
-zipp==3.23.1
+# ==============================================================================
+# CORE COMPUTER VISION & MACHINE LEARNING
+# ==============================================================================
+ultralytics==8.4.48             # Object detection framework (YOLOv8)
+ultralytics-thop==2.0.19        # Profile Model FLOPs and parameters for YOLO
+torch==2.8.0                    # Deep learning framework backend
+torchvision==0.23.0             # Image transformations and computer vision datasets
+opencv-python==4.13.0.92        # Image and video processing engine
+scipy==1.13.1                   # Scientific computing and advanced math algorithms
+
+# ==============================================================================
+# DATA ANALYSIS, PIPELINES & VISUALIZATION
+# ==============================================================================
+numpy==2.0.2                    # Fundamental package for array computing
+polars==1.36.1                  # High-performance dataframe library for log metrics
+polars-runtime-32==1.36.1       # Lightweight runtime optimization for Polars
+matplotlib==3.9.4               # Plotting and training curve visualizations
+contourpy==1.3.0                # Calculating contours of data arrays (Matplotlib dependency)
+cycler==0.12.1                  # Composable cycle hook for plotting styles
+fonttools==4.60.2               # Font parsing and manipulation for graph rendering
+kiwisolver==1.4.7               # Fast implementation of the Cassowary constraint solver
+networkx==3.2.1                 # Complex network structure and graph analysis
+
+# ==============================================================================
+# API BACKEND & WEB CORE (FASTAPI / UVICORN)
+# ==============================================================================
+fastapi==0.128.8                # Modern, fast web framework for building APIs
+uvicorn==0.39.0                 # Lightning-fast ASGI server implementation
+starlette==0.49.3               # Production-ready ASGI framework toolkit underlying FastAPI
+pydantic==2.13.4                # Data validation and settings management using Python type hints
+pydantic_core==2.46.4           # Core validation backend for Pydantic written in Rust
+annotated-doc==0.0.4            # Document extraction tools for annotated types
+annotated-types==0.7.0          # Extensible validation annotations for Pydantic
+h11==0.16.0                     # Pure-Python HTTP/1.1 protocol implementation
+python-multipart==0.0.20        # Multipart form parsing for API image uploads
+
+# ==============================================================================
+# NETWORKING, UTILITIES & SERIALIZATION
+# ==============================================================================
+requests==2.32.5                # Elegant and simple HTTP library for Python
+urllib3==2.6.3                  # Thread-safe HTTP client for Python
+certifi==2026.4.22              # Python package for providing Mozilla's CA Bundle
+charset-normalizer==3.4.7       # Universal charset detector
+idna==3.14                      # Internationalized Domain Names in Applications support
+PyYAML==6.0.3                   # YAML framework parser (critical for YOLO configs)
+Jinja2==3.1.6                   # Modern and designer-friendly templating language
+MarkupSafe==3.0.3               # Safely interpolates untrusted strings for templates
+
+# ==============================================================================
+# DEEP LEARNING SUPPORT, UTILS & MATHEMATICS
+# ==============================================================================
+pillow==11.3.0                  # Image processing library for file handling
+filelock==3.19.1                # Platform-independent file locking
+fsspec==2025.10.0               # Specification for streaming remote filesystems
+mpmath==1.3.0                   # Arbitrary precision floating-point arithmetic
+sympy==1.14.0                   # Symbolic mathematics library
+psutil==7.2.2                   # Process and system monitoring (RAM/CPU tracking)
+click==8.1.8                    # Package for creating beautiful command line interfaces
+anyio==4.12.1                   # High-level asynchronous concurrency framework
+
+# ==============================================================================
+# SYSTEM & PYTHON BACKPORTS (COMPATIBILITY)
+# ==============================================================================
+exceptiongroup==1.3.1           # Backport of PEP 654 exception groups
+importlib_resources==6.5.2     # Backport of 3.9's importlib.resources module
+packaging==26.2                 # Core utilities for Python packages
+pyparsing==3.3.2                # General parsing handling facility
+python-dateutil==2.9.0.post0    # Powerful extensions to standard datetime module
+six==1.17.0                     # Python 2 and 3 compatibility utilities
+typing-inspection==0.4.2        # Runtime typing inspection utility
+typing_extensions==4.15.0       # Backported and experimental type hints
+zipp==3.23.1                    # Backport of pathlib-compatible zip file wrapper
