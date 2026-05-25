@@ -48,3 +48,6 @@ data/labels/val/*
 !data/labels/val/.gitkeep
 data/labels/test/*
 !data/labels/test/.gitkeep
+
+# Ignore the local production models folder
+models/
