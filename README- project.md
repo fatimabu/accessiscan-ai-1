@@ -42,14 +42,14 @@ Behind the mobile interface, the pipeline operations are entirely decoupled acro
 
 ```
                   +-----------------------------------+
-                  |      ai_engine.py (Orchestrator)  |
+                  |     ` ai_engine.py` (Orchestrator)  |
                   +-----------------+-----------------+
                                   |
             +-----------------------+-----------------------+
             |                                               |
             v                                               v
 +-----------------------+                       +-----------------------+
-|       detect.py       |                       |  storage_manager.py   |
+|       `detect.py`     |                       |  `storage_manager.py` |
 |     (Specialist)      |                       |      (Archivist)      |
 |                       |                       |                       |
 | * YOLOv8-Nano (FP16)  |                       | * Legal Decision Pass |
@@ -129,22 +129,22 @@ AccessiScan-AI/
 Initialize your isolated local runtime environment and install the verified dependency versions using the terminal:
 
 #### 1. Clone the repository and navigate to the project root
-cd AccessiScan-AI
+`cd AccessiScan-AI`
 
 #### 2. Instantiate and isolate the Python virtual environment
-python -m venv venv
+`python -m venv venv`
 
 #### 3. Activate the virtual environment context
 #### For Windows PowerShell / Command Prompt:
-venv\Scripts\activate
+`venv\Scripts\activate`
 #### For macOS / Linux Terminal:
-source venv/bin/activate
+`source venv/bin/activate`
 
 #### 4. Upgrade core package managers
-pip install --upgrade pip setuptools wheel
+`pip install --upgrade pip setuptools wheel`
 
 #### 5. Install the pinned production dependency tree
-pip install ultralytics opencv-python numpy scipy wandb
+`pip install ultralytics opencv-python numpy scipy wandb`
 
 [!WARNING] Universal Data-Loader Stability Control: > The training workflow inside train.py hardcodes multi-threaded data loading to a single main process (workers=0). This architectural pin is mandatory to prevent system-level socket hangs and race conditions inside the Python data loader when executing on standard consumer workstations. Do not modify this parameter, as it guarantees deterministic optimization runs.
 
@@ -203,11 +203,11 @@ String compliance is explicitly checked by the auditing engine. Every identifier
 To initiate the machine learning training pipeline for the Nano-class architecture, navigate to your project root folder and execute the training script. The script automatically orchestrates the optimization cycle using your pre-configured, deterministic hyperparameters:
 
 #### Execute directly from the AccessiScan-AI root directory
-python train.py
+`python train.py`
 
 **Note: If you need to manually override the native configurations via the command line interface parser arguments, you can pass custom parameters explicitly:*
 
-python train.py --model yolov8n.pt --epochs 100 --imgsz 640 --device cpu
+`python train.py --model yolov8n.pt --epochs 100 --imgsz 640 --device cpu`
 
 ### Underlying Configuration Logic
 The execution loop inside train.py handles complete optimization tracking and model compilation via a four-fold architectural pattern:
@@ -227,7 +227,7 @@ The execution loop inside train.py handles complete optimization tracking and mo
 The main application workflow is managed directly via ai_engine.py sitting at the project root directory. This core engine controls the data hand-offs, exception-handling wrappers, and execution sequence across your decoupled submodules to transform an incoming image array into verified compliance outputs:
 
 #### Execute the central orchestration audit loop from the root directory
-python ai_engine.py
+`python ai_engine.py`
 
 **The Vision Processing Phase:**
 `ai_engine.py` intercepts the raw file path pointer from the environment and streams the pixel matrix into `scripts/detect.py`.
@@ -259,7 +259,7 @@ All primary performance variables—including localization loss, classification 
 
 **Network Disruption Recovery Fallback:**If a training run is executed in an offline environment or suffers a network drop out, metrics are safely preserved locally in cache. They can be manually synchronized to the cloud dashboard using the fallback recovery command:
 
-wandb sync
+`wandb sync`
 
 ### Multi-Thread Operational Safety
 
