@@ -127,16 +127,16 @@ AccessiScan-AI/
 
 Initialize your isolated local runtime environment and install the verified dependency versions using the terminal:
 
-# 1. Clone the repository and navigate to the project root
+#### 1. Clone the repository and navigate to the project root
 cd AccessiScan-AI
 
-# 2. Instantiate and isolate the Python virtual environment
+#### 2. Instantiate and isolate the Python virtual environment
 python -m venv venv
 
-# 3. Activate the virtual environment context
-# For Windows PowerShell / Command Prompt:
+#### 3. Activate the virtual environment context
+#### For Windows PowerShell / Command Prompt:
 venv\Scripts\activate
-# For macOS / Linux Terminal:
+#### For macOS / Linux Terminal:
 source venv/bin/activate
 
 # 4. Upgrade core package managers
@@ -204,7 +204,7 @@ String compliance is explicitly checked by the auditing engine. Every identifier
 
 To initiate the machine learning training pipeline for the Nano-class architecture, navigate to your project root folder and execute the training script. The script automatically orchestrates the optimization cycle using your pre-configured, deterministic hyperparameters:
 
-# Execute directly from the AccessiScan-AI root directory
+#### Execute directly from the AccessiScan-AI root directory
 python train.py
 
 **Note: If you need to manually override the native configurations via the command line interface parser arguments, you can pass custom parameters explicitly:*
@@ -228,7 +228,7 @@ The execution loop inside train.py handles complete optimization tracking and mo
 
 The main application workflow is managed directly via ai_engine.py sitting at the project root directory. This core engine controls the data hand-offs, exception-handling wrappers, and execution sequence across your decoupled submodules to transform an incoming image array into verified compliance outputs:
 
-### Execute the central orchestration audit loop from the root directory
+#### Execute the central orchestration audit loop from the root directory
 python ai_engine.py
 
 **The Vision Processing Phase:**
