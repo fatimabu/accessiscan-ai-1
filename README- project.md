@@ -158,31 +158,31 @@ The `configs/data.yaml` file functions as the platform's core Legal Mapping Docu
 To prove architectural scalability for regional deployment, the final output layer is configured for the complete 20-class compliance framework (nc: 20). The active software layer dynamically audits 7 core high-risk classes, while the remaining 13 classes are natively reserved to enable seamless future model expansion without breaking core reporting structures or API schemas.
 
 **The 20 DSAPT Classes (Taxonomy):**
-
-Category	           Specific Label	                    DSAPT Reference
-------------------   --------------------------------   ---------------  
-Signage	             accessibility_signage	            DSAPT Part 17
-Protection	         handrail	                        DSAPT Part 15
-Infrastructure	     kerb_ramp	                        DSAPT Part 6.5
-Boarding	         platform_edges	                    DSAPT Part 10
-Vertical Movement	 ramp	                            DSAPT Part 6
-Vertical Movement	 stairs	                            DSAPT Part 
-Tactile Indicators	 tactile_indicators	                DSAPT Part 18
-Signage	             signage_braille	                DSAPT Part 17.2
-Protection	         barriers	                        DSAPT Part 15.4
-Boarding	         boarding_points	                DSAPT Part 8
-Boarding	         gaps	                            DSAPT Part 8.2
-Access	             mobility_access_features           DSAPT Part 4
-Access	             path_widths	                    DSAPT Part 2
-Infrastructure	     vertical_movement_infrastructure   DSAPT Part 13
-Infrastructure	     lift_entries	                    DSAPT Part 13.1
-Infrastructure	     escalators	                        DSAPT Part 14.3
-Infrastructure	     kerb_ramp	                        DSAPT Part 6.5
-Infrastructure	     parking_bays	                    DSAPT Part 1
-Access	             thresholds	                        DSAPT Part 2.4
-Communications	     hearing_loops	                    DSAPT Part 26
-Protection	         bollards	                        DSAPT Part 2.1
-
++------------------+  +--------------------------------+  +----------------+
+|Category	         |  |Specific Label	                 |  | DSAPT Reference|
++------------------+  +--------------------------------+  +----------------+ 
+|Signage	          |  |accessibility_signage	          |  |DSAPT Part 17   |
+|Protection	       |  |handrail	                       |  |DSAPT Part 15   |
+|Infrastructure	   |  |kerb_ramp	                      |  |DSAPT Part 6.5  |
+|Boarding	         |  |platform_edges	                 |  |DSAPT Part 10   |
+|Vertical Movement	|  |ramp	                           |  |DSAPT Part 6    |
+|Vertical Movement	|  |stairs	                         |  |DSAPT Part      |
+|Tactile Indicators|	 |tactile_indicators	             |  |DSAPT Part 18   |
+|Signage	          |  |signage_braille	                |  |DSAPT Part 17.2 |
+|Protection	       |  |barriers	                       |  |DSAPT Part 15.4 |
+|Boarding	         |  |boarding_points	                |  |DSAPT Part 8    |
+|Boarding	         |  |gaps	                           |  |DSAPT Part 8.2  |
+|Access	           |  |mobility_access_features        |  |DSAPT Part 4    |
+|Access	           |  |path_widths	                    |  |DSAPT Part 2    |
+|Infrastructure	   |  |vertical_movement_infrastructure|  |DSAPT Part 13   |
+|Infrastructure	   |  |lift_entries	                   |  |DSAPT Part 13.1 |
+|Infrastructure	   |  |escalators	                     |  |DSAPT Part 14.3 |
+|Infrastructure	   |  |kerb_ramp	                      |  |DSAPT Part 6.5  |
+|Infrastructure	   |  |parking_bays	                   |  |DSAPT Part 1    |
+|Access	           |  |thresholds	                     |  |DSAPT Part 2.4  |
+|Communications	   |  |hearing_loops	                  |  |DSAPT Part 26   |
+|Protection	       |  |bollards	                       |  |DSAPT Part 2.1  |
++------------------+  +--------------------------------+  +----------------+
 ### Mandatory Naming Standardization
 
 String compliance is explicitly checked by the auditing engine. Every identifier must adhere strictly to singular snake_case syntax.
