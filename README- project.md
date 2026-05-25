@@ -42,14 +42,14 @@ Behind the mobile interface, the pipeline operations are entirely decoupled acro
 
 ```
                   +-----------------------------------+
-                  |      ai_engine.py (Orchestrator)  |
+                  |     ` ai_engine.py` (Orchestrator)  |
                   +-----------------+-----------------+
                                   |
             +-----------------------+-----------------------+
             |                                               |
             v                                               v
 +-----------------------+                       +-----------------------+
-|       detect.py       |                       |  storage_manager.py   |
+|       `detect.py`     |                       |  `storage_manager.py` |
 |     (Specialist)      |                       |      (Archivist)      |
 |                       |                       |                       |
 | * YOLOv8-Nano (FP16)  |                       | * Legal Decision Pass |
@@ -76,6 +76,7 @@ Definitions of success are tied to rigorous engineering and ethical benchmarks:
 
 The repository enforces a decoupled directory layout to support reproducible machine learning training and strict separation between stateless vision execution and file persistence layers:
 
+```
 AccessiScan-AI/
 ├──ai_engine.py                 # Executive Pipeline controller(Main Entry Point)
 ├── train.py                    # Production ML Training & Model Compilation Loop
@@ -106,7 +107,7 @@ AccessiScan-AI/
 ├── README.md                   # Core Project Architectural Blueprint Document
 ├── LICENSE                     # Project license
 └── .gitignore                  # Environment Protection Filters (Omits Local venv & Caches)
-
+```
 
 [!IMPORTANT] Production Subfolder Pathing Logic Guardrail: > To guarantee runtime stability across diverse local or server deployment locations, `scripts/detect.py` evaluates model assets utilizing strict relative lookups (`../models/train/weights/best.pt`). This architecture guarantees that the execution layer reads target weights flawlessly when initialized from the central project directory. If the weight file is missing during initialization, the pipeline implements an automated graceful degradation fallback to base `yolov8n.pt` to prevent app-wide thread crashes.
 
@@ -127,23 +128,23 @@ AccessiScan-AI/
 
 Initialize your isolated local runtime environment and install the verified dependency versions using the terminal:
 
-# 1. Clone the repository and navigate to the project root
-cd AccessiScan-AI
+#### 1. Clone the repository and navigate to the project root
+`cd AccessiScan-AI`
 
-# 2. Instantiate and isolate the Python virtual environment
-python -m venv venv
+#### 2. Instantiate and isolate the Python virtual environment
+`python -m venv venv`
 
-# 3. Activate the virtual environment context
-# For Windows PowerShell / Command Prompt:
-venv\Scripts\activate
-# For macOS / Linux Terminal:
-source venv/bin/activate
+#### 3. Activate the virtual environment context
+#### For Windows PowerShell / Command Prompt:
+`venv\Scripts\activate`
+#### For macOS / Linux Terminal:
+`source venv/bin/activate`
 
-# 4. Upgrade core package managers
-pip install --upgrade pip setuptools wheel
+#### 4. Upgrade core package managers
+`pip install --upgrade pip setuptools wheel`
 
-# 5. Install the pinned production dependency tree
-pip install ultralytics opencv-python numpy scipy wandb
+#### 5. Install the pinned production dependency tree
+`pip install ultralytics opencv-python numpy scipy wandb`
 
 [!WARNING] Universal Data-Loader Stability Control: > The training workflow inside train.py hardcodes multi-threaded data loading to a single main process (workers=0). This architectural pin is mandatory to prevent system-level socket hangs and race conditions inside the Python data loader when executing on standard consumer workstations. Do not modify this parameter, as it guarantees deterministic optimization runs.
 
@@ -158,31 +159,28 @@ The `configs/data.yaml` file functions as the platform's core Legal Mapping Docu
 To prove architectural scalability for regional deployment, the final output layer is configured for the complete 20-class compliance framework (nc: 20). The active software layer dynamically audits 7 core high-risk classes, while the remaining 13 classes are natively reserved to enable seamless future model expansion without breaking core reporting structures or API schemas.
 
 **The 20 DSAPT Classes (Taxonomy):**
-
-Category	           Specific Label	                    DSAPT Reference
-------------------   --------------------------------   ---------------  
-Signage	             accessibility_signage	            DSAPT Part 17
-Protection	         handrail	                        DSAPT Part 15
-Infrastructure	     kerb_ramp	                        DSAPT Part 6.5
-Boarding	         platform_edges	                    DSAPT Part 10
-Vertical Movement	 ramp	                            DSAPT Part 6
-Vertical Movement	 stairs	                            DSAPT Part 
-Tactile Indicators	 tactile_indicators	                DSAPT Part 18
-Signage	             signage_braille	                DSAPT Part 17.2
-Protection	         barriers	                        DSAPT Part 15.4
-Boarding	         boarding_points	                DSAPT Part 8
-Boarding	         gaps	                            DSAPT Part 8.2
-Access	             mobility_access_features           DSAPT Part 4
-Access	             path_widths	                    DSAPT Part 2
-Infrastructure	     vertical_movement_infrastructure   DSAPT Part 13
-Infrastructure	     lift_entries	                    DSAPT Part 13.1
-Infrastructure	     escalators	                        DSAPT Part 14.3
-Infrastructure	     kerb_ramp	                        DSAPT Part 6.5
-Infrastructure	     parking_bays	                    DSAPT Part 1
-Access	             thresholds	                        DSAPT Part 2.4
-Communications	     hearing_loops	                    DSAPT Part 26
-Protection	         bollards	                        DSAPT Part 2.1
-
+| Category | Specific Label | DSAPT Reference |
+| :--- | :--- | :--- |
+| Signage | accessibility_signage | DSAPT Part 17 |
+| Protection | handrail | DSAPT Part 15 |
+| Infrastructure | kerb_ramp | DSAPT Part 6.5 |
+| Boarding | platform_edges | DSAPT Part 10 |
+| Vertical Movement | ramp | DSAPT Part 6 |
+| Vertical Movement | stairs | DSAPT Part 14 |
+| Tactile Indicators | tactile_indicators | DSAPT Part 18 |
+| Signage | signage_braille | DSAPT Part 17.2 |
+| Protection | barriers | DSAPT Part 15.4 |
+| Boarding | boarding_points | DSAPT Part 8 |
+| Boarding | gaps | DSAPT Part 8.2 |
+| Access | mobility_access_features | DSAPT Part 4 |
+| Access | path_widths | DSAPT Part 2 |
+| Infrastructure | vertical_movement_infrastructure | DSAPT Part 13 |
+| Infrastructure | lift_entries | DSAPT Part 13.1 |
+| Infrastructure | escalators | DSAPT Part 14.3 |
+| Infrastructure | parking_bays | DSAPT Part 1 |
+| Access | thresholds | DSAPT Part 2.4 |
+| Communications | hearing_loops | DSAPT Part 26 |
+| Protection | bollards | DSAPT Part 2.1 |
 ### Mandatory Naming Standardization
 
 String compliance is explicitly checked by the auditing engine. Every identifier must adhere strictly to singular snake_case syntax.
@@ -204,12 +202,12 @@ String compliance is explicitly checked by the auditing engine. Every identifier
 
 To initiate the machine learning training pipeline for the Nano-class architecture, navigate to your project root folder and execute the training script. The script automatically orchestrates the optimization cycle using your pre-configured, deterministic hyperparameters:
 
-# Execute directly from the AccessiScan-AI root directory
-python train.py
+#### Execute directly from the AccessiScan-AI root directory
+`python train.py`
 
 **Note: If you need to manually override the native configurations via the command line interface parser arguments, you can pass custom parameters explicitly:*
 
-python train.py --model yolov8n.pt --epochs 100 --imgsz 640 --device cpu
+`python train.py --model yolov8n.pt --epochs 100 --imgsz 640 --device cpu`
 
 ### Underlying Configuration Logic
 The execution loop inside train.py handles complete optimization tracking and model compilation via a four-fold architectural pattern:
@@ -228,8 +226,8 @@ The execution loop inside train.py handles complete optimization tracking and mo
 
 The main application workflow is managed directly via ai_engine.py sitting at the project root directory. This core engine controls the data hand-offs, exception-handling wrappers, and execution sequence across your decoupled submodules to transform an incoming image array into verified compliance outputs:
 
-### Execute the central orchestration audit loop from the root directory
-python ai_engine.py
+#### Execute the central orchestration audit loop from the root directory
+`python ai_engine.py`
 
 **The Vision Processing Phase:**
 `ai_engine.py` intercepts the raw file path pointer from the environment and streams the pixel matrix into `scripts/detect.py`.
@@ -261,7 +259,7 @@ All primary performance variables—including localization loss, classification 
 
 **Network Disruption Recovery Fallback:**If a training run is executed in an offline environment or suffers a network drop out, metrics are safely preserved locally in cache. They can be manually synchronized to the cloud dashboard using the fallback recovery command:
 
-wandb sync
+`wandb sync`
 
 ### Multi-Thread Operational Safety
 
