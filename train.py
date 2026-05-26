@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
-"""
-train.py - Production-grade training and optimization entrypoint for AccesiScan-AI.
 
-This script executes the neural network training pipeline, implements 
-mobile-ready weight serialization, and archives success metrics for 
-Technology Readiness Level (TRL) 3 verification.
+"""
+ACCESSISCAN TRAINER (The Laboratory)
+------------------------------------
+Purpose:
+    Handles the training and fine-tuning of the YOLO-based vision models.
+    This module encapsulates the training loop, hyperparameter management,
+    and dataset integration for the DSAPT compliance project.
+
+Functionality:
+    - Loads training configurations from 'data.yaml'.
+    - Configures model architecture and initialization.
+    - Manages training cycles, validation, and weight exportation.
+
+Integration:
+    This script is intended to be run during the development and iteration phases 
+    to produce new model weights for the AccesiScanDetector.
 """
 
 import argparse
