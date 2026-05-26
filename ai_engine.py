@@ -1,21 +1,11 @@
 import os
-import platform
-import ctypes
-from importlib.util import find_spec
-
-if platform.system() == "Windows":
-    try:
-        # Pre-locate and force-load c10.dll to resolve system initialization hangs
-        if (spec := find_spec("torch")) and spec.origin:
-            dll_path = os.path.join(os.path.dirname(spec.origin), "lib", "c10.dll")
-            if os.path.exists(dll_path):
-                ctypes.CDLL(os.path.normpath(dll_path))
-    except Exception:
-        pass
-    
 import cv2
 from scripts.detect import AccesiScanDetector
 from scripts.storage_manager import AuditStorage
+
+from scripts.system_utils import setup_environment
+# Initialize environment before loading heavy ML dependencies
+setup_environment()
 
 class AccesiScanEngine:
     """
