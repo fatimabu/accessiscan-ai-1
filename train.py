@@ -22,7 +22,7 @@ def main():
     # 2. Seamlessly join it with the subfolder path, safe for both Windows and Mac/Linux
     DEFAULT_DATA_PATH = os.path.join(BASE_DIR, 'configs', 'data.yaml')
     parser = argparse.ArgumentParser(description="Train YOLOv8 on AccessiScan dataset")
-    # Points to the final 20-class configuration
+    # Points to the final 7-class configuration
     parser.add_argument('--data', default='configs/data.yaml', help='path to dataset yaml')
     parser.add_argument('--model', default='yolov8n.pt', help='base model (Nano version for mobile)')
     parser.add_argument('--epochs', type=int, default=100)
