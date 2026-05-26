@@ -1,3 +1,22 @@
+"""
+ACCESSISCAN DETECTOR (The Specialist)
+-------------------------------------
+Purpose:
+    Handles computer vision inference and metrology extraction.
+    This module encapsulates the YOLO architecture to identify accessibility
+    features and perform compliance measurements.
+
+Functionality:
+    - Loads the trained model weights for real-time inference.
+    - Processes raw images through the AI pipeline.
+    - Maps bounding box coordinates to real-world dimensions for 
+      compliance verification against DSAPT standards.
+
+Integration:
+    This module serves as the 'Vision Specialist', providing structured 
+    data to the AccesiScanEngine for archival and reporting.
+    """
+
 import cv2
 import numpy as np
 import os
