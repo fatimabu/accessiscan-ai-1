@@ -1,3 +1,21 @@
+"""
+AI ENGINE
+---------------------
+Purpose:
+    Acts as the executive pipeline controller for the AccessiScan-AI system.
+    This module orchestrates the workflow between the Computer Vision 'Specialist' 
+    (AccesiScanDetector) and the Data 'Archivist' (AuditStorage).
+
+Integration:
+    - Input: Raw imagery of infrastructure/stations.
+    - Process: AI analysis, precision metrology, and compliance verification.
+    - Output: Annotated visual evidence and archived technical report data.
+
+Usage:
+    Import the AccesiScanEngine class to integrate with Mobile UI or Backend 
+    services. Designed for robust, multi-stage processing with error handling.
+    """
+
 import os
 import cv2
 from scripts.detect import AccesiScanDetector
