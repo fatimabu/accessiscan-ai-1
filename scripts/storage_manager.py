@@ -1,3 +1,20 @@
+"""
+STORAGE MANAGER (The Archivist)
+-------------------------------
+Purpose:
+    Handles all data persistence, file system management, and technical 
+    reporting for the AccessiScan-AI pipeline.
+
+Functionality:
+    - Automatically manages storage directories for images and audit reports.
+    - Serializes compliance findings into structured technical reports.
+    - Ensures visual evidence is correctly mapped to metadata for audit traceability.
+
+Workflow:
+    This module works in tandem with the AccesiScanEngine, receiving processed
+    AI outputs and persisting them in a compliant, searchable file structure.
+    """
+
 import json
 import datetime
 import os
