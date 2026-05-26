@@ -1,6 +1,5 @@
 # AccesiScan-AI: DSAPT 2026 Dataset Configuration
 # Purpose: Maps class labels to training imagery for accessibility infrastructure.
-
 path: ./data          # The root directory of the dataset
 train: images/train   # Images used to teach the AI
 val: images/val       # Images used to test accuracy during training

@@ -27,26 +27,31 @@ from ultralytics import YOLO
 
 
 def main():
-    # 1. Dynamically find the exact folder where THIS train.py file is saved
+    # Establish the Project Root
     BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-    
-    # 2. Seamlessly join it with the subfolder path, safe for both Windows and Mac/Linux
-    DEFAULT_DATA_PATH = os.path.join(BASE_DIR, 'configs', 'data.yaml')
+    os.chdir(BASE_DIR)  # This forces everything to happen inside your project folder
+
+    # Define the path to your config
+    config_path = os.path.join(BASE_DIR, 'configs', 'data.yaml')
+
+    # Initialize the parser ONCE
     parser = argparse.ArgumentParser(description="Train YOLOv8 on AccessiScan dataset")
-    # Points to the final 7-class configuration
-    parser.add_argument('--data', default='configs/data.yaml', help='path to dataset yaml')
-    parser.add_argument('--model', default='yolov8n.pt', help='base model (Nano version for mobile)')
+    
+    # Use the absolute path defined above as the default
+    parser.add_argument('--data', default=config_path, help='path to dataset yaml')
+    parser.add_argument('--model', default='yolov8n.pt', help='base model')
     parser.add_argument('--epochs', type=int, default=100)
     parser.add_argument('--batch', type=int, default=16)
-    # Benchmark 1: imgsz=640 is required for geometric precision
     parser.add_argument('--imgsz', type=int, default=640)
-    parser.add_argument('--device', default='cpu', help='CPU is used for stable local environment')
-    parser.add_argument('--project', default='models/train', help='save directory')
-    parser.add_argument('--name', default='run', help='run name')
+    parser.add_argument('--device', default='cpu')
+    parser.add_argument('--project', default='runs', help='save directory')
+    parser.add_argument('--name', default='train', help='run name')
+    
     args = parser.parse_args()
 
+    # 4. Proceed with training
     os.makedirs(args.project, exist_ok=True)
-
+    
     print(f"--- AccessiScan-AI: Training Started ---")
     print(f"Model: {args.model} | Data: {args.data} | Resolution: {args.imgsz}")
 
