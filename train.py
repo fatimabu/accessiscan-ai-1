@@ -1,10 +1,21 @@
 #!/usr/bin/env python3
-"""
-train.py - Production-grade training and optimization entrypoint for AccesiScan-AI.
 
-This script executes the neural network training pipeline, implements 
-mobile-ready weight serialization, and archives success metrics for 
-Technology Readiness Level (TRL) 3 verification.
+"""
+ACCESSISCAN TRAINER (The Laboratory)
+------------------------------------
+Purpose:
+    Handles the training and fine-tuning of the YOLO-based vision models.
+    This module encapsulates the training loop, hyperparameter management,
+    and dataset integration for the DSAPT compliance project.
+
+Functionality:
+    - Loads training configurations from 'data.yaml'.
+    - Configures model architecture and initialization.
+    - Manages training cycles, validation, and weight exportation.
+
+Integration:
+    This script is intended to be run during the development and iteration phases 
+    to produce new model weights for the AccesiScanDetector.
 """
 
 import argparse
@@ -22,7 +33,7 @@ def main():
     # 2. Seamlessly join it with the subfolder path, safe for both Windows and Mac/Linux
     DEFAULT_DATA_PATH = os.path.join(BASE_DIR, 'configs', 'data.yaml')
     parser = argparse.ArgumentParser(description="Train YOLOv8 on AccessiScan dataset")
-    # Points to the final 20-class configuration
+    # Points to the final 7-class configuration
     parser.add_argument('--data', default='configs/data.yaml', help='path to dataset yaml')
     parser.add_argument('--model', default='yolov8n.pt', help='base model (Nano version for mobile)')
     parser.add_argument('--epochs', type=int, default=100)

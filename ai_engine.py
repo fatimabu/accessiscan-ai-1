@@ -1,21 +1,29 @@
-import os
-import platform
-import ctypes
-from importlib.util import find_spec
+"""
+AI ENGINE
+---------------------
+Purpose:
+    Acts as the executive pipeline controller for the AccessiScan-AI system.
+    This module orchestrates the workflow between the Computer Vision 'Specialist' 
+    (AccesiScanDetector) and the Data 'Archivist' (AuditStorage).
 
-if platform.system() == "Windows":
-    try:
-        # Pre-locate and force-load c10.dll to resolve system initialization hangs
-        if (spec := find_spec("torch")) and spec.origin:
-            dll_path = os.path.join(os.path.dirname(spec.origin), "lib", "c10.dll")
-            if os.path.exists(dll_path):
-                ctypes.CDLL(os.path.normpath(dll_path))
-    except Exception:
-        pass
-    
+Integration:
+    - Input: Raw imagery of infrastructure/stations.
+    - Process: AI analysis, precision metrology, and compliance verification.
+    - Output: Annotated visual evidence and archived technical report data.
+
+Usage:
+    Import the AccesiScanEngine class to integrate with Mobile UI or Backend 
+    services. Designed for robust, multi-stage processing with error handling.
+    """
+
+import os
 import cv2
 from scripts.detect import AccesiScanDetector
 from scripts.storage_manager import AuditStorage
+
+from scripts.system_utils import setup_environment
+# Initialize environment before loading heavy ML dependencies
+setup_environment()
 
 class AccesiScanEngine:
     """
