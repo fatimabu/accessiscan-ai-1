@@ -78,12 +78,12 @@ The repository enforces a decoupled directory layout to support reproducible mac
 
 ```
 AccessiScan-AI/
-├──ai_engine.py                 # Executive Pipeline controller(Main Entry Point)
-├── train.py                    # Production ML Training & Model Compilation Loop
-├── configs/                    # Model Strategy Configuration Layer
-│   └── data.yaml               # Legal Dataset Taxonomy Definitions(classes and paths)
-├── data/                       # YOLO-formatted dataset (images + labels)
-│   ├── images/                 # Raw Audit Verification Image Matrix Arrays
+├──ai_engine.py                 # Main entry point: Connects the vision AI to the data storage
+├── train.py                    # AI training script: Fine-tunes the YOLO model on your dataset
+├── configs/                    # Settings folder
+│   └── data.yaml               # Dataset setup: Defines the 20 compliance classes and image paths
+├── data/                       # The training data folder (YOLO format)
+│   ├── images/                 # Raw photographs used for training, validation, and testing
 │   │   ├── train/
 │   │   ├── val/
 │   │   └── test/
@@ -91,22 +91,23 @@ AccessiScan-AI/
 │       ├── train/
 │       ├── val/
 │       └── test/
-├── scripts/                    # Decoupled Operational Submodules
-│   ├── detect.py               # The Specialist: Stateless Vision Inference & Metrology Engine
-│   └── storage_manager.py      # The Archivist: Legal Decision Engine & JSON Ledger System
-├── models/                     # Production Network Topology Weights Storage
+├── scripts/                    # Core logic modules
+│   ├── detect.py               # The Specialist: Runs object detection and physical measurements
+│   ├── storage_manager.py      # The Archivist: Saves audit photos and creates clean JSON data reports
+    └── system_utils.py         # Infrastructure: Keeps the code working smoothly on both Windows and Mac
+├── models/                     # AI Brain Storage
 │   └── train/
 │       └── weights/            # Production model location
-│           └── best.pt         # Latest best model (auto-copied) 
-├── runs/                       # Automated Pipeline Outputs
+│           └── best.pt         # The absolute best-performing model weights (auto-copied here)
+├── runs/                       # Automated outputs from running the code
 │   └── detect/                 
-│       ├── predict/            # [Storage] Standard YOLO inference (Label overlays)
-│       └── audit_results/      # [Storage] DSAPT Compliance Reports & Metrology Evidence
-├── wandb/                      # Offline experiment tracking
-├── requirements.txt            # Project Framework Pinpoint Dependencies
-├── README.md                   # Core Project Architectural Blueprint Document
+│       ├── predict/            # [Storage] Standard AI output images with label overlays
+│       └── audit_results/      # [Storage] Final DSAPT compliance reports and cropped visual evidence
+├── wandb/                      # Background folder for tracking training graphs and statistics
+├── requirements.txt            # List of Python packages required to run the project
+├── README.md                   # The main documentation guide for the project
 ├── LICENSE                     # Project license
-└── .gitignore                  # Environment Protection Filters (Omits Local venv & Caches)
+└── .gitignore                  # Environment Protection Filters (Keeps giant files, caches, and local environments off GitHub)
 ```
 
 [!IMPORTANT] Production Subfolder Pathing Logic Guardrail: > To guarantee runtime stability across diverse local or server deployment locations, `scripts/detect.py` evaluates model assets utilizing strict relative lookups (`../models/train/weights/best.pt`). This architecture guarantees that the execution layer reads target weights flawlessly when initialized from the central project directory. If the weight file is missing during initialization, the pipeline implements an automated graceful degradation fallback to base `yolov8n.pt` to prevent app-wide thread crashes.
